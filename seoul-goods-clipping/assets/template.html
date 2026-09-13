@@ -196,12 +196,42 @@
 
   </section>
 
-  <!-- Section 2: 굿즈관련 — general Korean goods/merch trend news, NOT restricted to Seoul's
-       own brand. A genuine launch/collab/completion-sellout story anywhere in Korea counts. -->
+  <!-- Section 2: 시장 동향 — news coverage of the Mayor's own activities/statements (not his
+       SNS accounts — see SKILL.md on why that's a different, unreliable thing). No 관련부서
+       tag here; this section is about the person, not department routing. -->
   <section class="block">
     <div class="section-head">
       <div class="sec-title-wrap">
         <span class="sec-num">02</span>
+        <div>
+          <div class="sec-eyebrow">Mayor's Activity</div>
+          <h2>시장 동향</h2>
+        </div>
+      </div>
+      <div class="sec-stat"><span class="stat-num">{{count}}</span><span class="stat-label">건</span></div>
+    </div>
+    <div class="head-rule"></div>
+
+    <a class="item" href="{{URL}}" target="_blank" rel="noopener">
+      <span class="item-num">2.1</span>
+      <div class="item-body">
+        <div class="item-top">
+          <span class="headline">{{기사 제목}}</span>
+        </div>
+        <div class="detail">{{주요내용 — 선택사항}} <span class="outlet">({{매체명}})</span></div>
+      </div>
+    </a>
+
+    <!-- ...repeat up to a reasonable count (5 is a sensible ceiling). -->
+
+  </section>
+
+  <!-- Section 3: 굿즈관련 — general Korean goods/merch trend news, NOT restricted to Seoul's
+       own brand. A genuine launch/collab/completion-sellout story anywhere in Korea counts. -->
+  <section class="block">
+    <div class="section-head">
+      <div class="sec-title-wrap">
+        <span class="sec-num">03</span>
         <div>
           <div class="sec-eyebrow">Goods Trend</div>
           <h2>굿즈관련</h2>
@@ -212,7 +242,7 @@
     <div class="head-rule"></div>
 
     <a class="item" href="{{URL}}" target="_blank" rel="noopener">
-      <span class="item-num">2.1</span>
+      <span class="item-num">3.1</span>
       <div class="item-body">
         <div class="item-top">
           <span class="headline">{{기사 제목}}</span>

@@ -1,28 +1,29 @@
 ---
 name: seoul-goods-clipping
-description: Produces the team's actual daily media-clipping format — two sections covering (1) 언론보도 (시·SDF 관련, general Seoul City/Seoul Design Foundation press, not just goods) and (2) 굿즈관련 (general Korean goods/merchandise trend news, not restricted to Seoul's own brand) — for yesterday's date only, all domestic outlets, rendered as a refined text-centric HTML page. Use this whenever the user asks for a "서울 클리핑", "시정 클리핑", "SDF 클리핑", "굿즈 뉴스클리핑", "오늘 클리핑 만들어줘" in a Seoul city-hall/SDF context, or wants the daily press/goods roundup the team normally publishes — even if they only mention one of the two sections. Do NOT trigger for one-off single-article requests, for general national news unrelated to Seoul city administration or the goods/merch beat, or for SNS/social-media monitoring (that section was dropped — public search can't reliably verify social post content, so this skill doesn't attempt it).
+description: Produces the team's actual daily media-clipping format — three sections covering (1) 언론보도 (시·SDF 관련, general Seoul City/Seoul Design Foundation press, not just goods), (2) 시장 동향 (news coverage of the Mayor's own public activities/statements), and (3) 굿즈관련 (general Korean goods/merchandise trend news, not restricted to Seoul's own brand) — for yesterday's date only, all domestic outlets, rendered as a refined text-centric HTML page. Use this whenever the user asks for a "서울 클리핑", "시정 클리핑", "SDF 클리핑", "굿즈 뉴스클리핑", "시장님 동향", "오늘 클리핑 만들어줘" in a Seoul city-hall/SDF context, or wants the daily press/mayor/goods roundup the team normally publishes — even if they only mention one of the three sections. Do NOT trigger for one-off single-article requests, for general national news unrelated to Seoul city administration or the goods/merch beat, or for SNS/social-media monitoring (that was tried and dropped — public search can't reliably verify social post content; 시장 동향 here means news coverage of the Mayor, not his social accounts).
 ---
 
-# Seoul Daily Clipping (Press · Goods, 2 Sections)
+# Seoul Daily Clipping (Press · Mayor · Goods, 3 Sections)
 
-This mirrors a real internal product: a daily clipping with two distinct sections, not one
+This mirrors a real internal product: a daily clipping with three distinct sections, not one
 undifferentiated list. Section scope is not uniform — Section 1 is genuinely broad (any Seoul
-City/SDF-relevant press, not just goods), and Section 2 is genuinely broad in a different way
-(any notable Korean goods/merch story, not just Seoul's own brand). Don't try to force one
-filtering rule across both — each section has its own bar, described below.
+City/SDF-relevant press, not just goods), Section 2 narrows to one person (the Mayor) but
+widens to any topic he touches, and Section 3 is broad in a different way again (any notable
+Korean goods/merch story, not just Seoul's own brand). Don't try to force one filtering rule
+across all three — each has its own bar, described below.
 
-(An earlier version of this skill had a third section, SNS채널, for official social-media
-posts. It was dropped: this environment can't reliably verify what a social account actually
-posted on a given day — logged-out platform pages don't expose the feed, and public web
-search only catches a post if some other article happens to describe it. Rather than keep
-publishing a section that was mostly "확인 불가," it was cut. If a future environment has
-real access to the relevant social accounts, it'd be worth re-adding — but don't reintroduce
-it without that.)
+(An earlier version of this skill had a section for official social-media posts (SNS채널). It
+was dropped: this environment can't reliably verify what a social account actually posted on
+a given day — logged-out platform pages don't expose the feed, and public web search only
+catches a post if some other article happens to describe it. Section 2 below is a different,
+more tractable idea aimed at the same underlying need ("what's the Mayor been up to") — it
+tracks *news coverage* of him, which is normal search territory, not his accounts directly.
+Don't fold Section 2 back into raw SNS monitoring without real account access.)
 
 ## Common setup
 
 Take today's date from the environment/system context in KST and subtract one day — that's
-the target calendar date for both sections. State it once at the top of the output.
+the target calendar date for all three sections. State it once at the top of the output.
 
 No outlet whitelist anywhere in this skill — any legitimate Korean news outlet counts, not a
 curated Tier-1 list. What still doesn't count as a citable source: government PR channels
@@ -65,7 +66,29 @@ Number sub-items 1.1, 1.2, etc. Cap at a reasonable count (5 is a sensible ceili
 "don't pad a quiet day" discipline as the rest of this skill: if there are only 2 genuine
 items, list 2.
 
-## Section 2 — 굿즈관련
+## Section 2 — 시장 동향
+
+News coverage of the Mayor's own public activities, statements, or schedule for the target
+date — an event he attended, a policy he personally announced, a remark he made, an interview.
+Search "오세훈" and "오세훈 시장" (or "오세훈 서울시장") with the date filter — if a different
+mayor is in office when this runs, use their name instead; don't assume the name is fixed.
+
+This overlaps with Section 1 in subject matter (both are Seoul city-hall news) but the lens is
+different: Section 1 asks "is this relevant to the city/SDF broadly," Section 2 asks
+"did the Mayor himself do or say this." A story can qualify for both — that's fine, but put it
+in whichever section is the better fit for its actual focus rather than duplicating it in both
+(a policy announcement he personally delivered goes in Section 2; a department's routine
+program update that merely quotes him in passing belongs in Section 1, or neither).
+
+Skip pure photo-caption filler (a wire-service one-line photo credit with no real content)
+unless the event itself is genuinely newsworthy — a caption noting he attended a minor
+ceremony isn't worth a slot on its own.
+
+Capture headline + 원문링크 + an optional one-line detail, same shape as Section 1 but without
+a 관련부서 tag (this section is about the person, not department routing). Cap at a reasonable
+count (5 is a sensible ceiling), same "don't pad" discipline.
+
+## Section 3 — 굿즈관련
 
 General Korean goods/merchandise trend news for the target date — **deliberately not
 restricted to Seoul's own brand or any keyword list.** A notable new collaboration, a product
@@ -84,7 +107,7 @@ like "굿즈 콜라보", "굿즈 완판", "굿즈 출시" to catch the sharper h
 
 Cap at a reasonable count (5 is a sensible ceiling), same padding discipline as elsewhere.
 
-## Verification (both sections)
+## Verification (all sections)
 
 Open each candidate (don't trust the search snippet alone) and confirm the byline/dateline
 matches the target date exactly — a live search result's "N시간 전" language is relative to
@@ -92,13 +115,13 @@ whenever you're searching, not a fixed date, so check the article's own timestam
 
 ## Build the text-centric HTML page
 
-Not a card grid — a numbered, editorial text list matching the real format: two headed
-sections ("01 언론보도 (市·SDF 관련)", "02 굿즈관련"), sub-numbered items within Section 1
-(1.1, 1.2...), and a numbered list for Section 2. Use `assets/template.html` as the starting
-structure — it's styled after a "Bain Red" consulting-deck look the user referenced (red
-#CC0000 / navy #00253E, bold sans headlines, thin rule dividers, uppercase tracked eyebrows,
-a big red stat number per section showing its item count). This replaced an earlier serif
-editorial look — don't revert to serif headlines or a softer palette without the user asking.
+Not a card grid — a numbered, editorial text list matching the real format: three headed
+sections ("01 언론보도 (市·SDF 관련)", "02 시장 동향", "03 굿즈관련"), sub-numbered items
+within Section 1 (1.1, 1.2...), and numbered lists for Sections 2 and 3 (2.1... / 3.1...).
+Use `assets/template.html` as the starting structure — it's styled after a "Bain Red"
+consulting-deck look the user referenced (red #CC0000 / navy #00253E, bold sans headlines,
+thin rule dividers, uppercase tracked eyebrows, a big red stat number per section showing its
+item count). Don't revert to serif headlines or a softer palette without the user asking.
 Keep the visual polish even though the structure is closer to a working memo than a magazine
 page; it should read as considered, not decorative.
 
@@ -114,13 +137,16 @@ repeat runs don't collide.
 
 ## Sanity check before delivering
 
-- Both section headers are present, even on a section with zero items
+- All three section headers are present, even on a section with zero items
 - Section 1 items are genuinely about Seoul City/SDF broadly (not filtered down to only
   goods-related ones) and only carry a 관련부서 tag where it's a confident inference
-- Section 2 items are genuine dated goods/merch news, unrestricted by brand, but still real
+- Section 2 items are genuinely about the Mayor's own activity/statement, not just any
+  city-hall story that happens to mention him, and no single story sits in both Section 1
+  and Section 2
+- Section 3 items are genuine dated goods/merch news, unrestricted by brand, but still real
   news (not incidental mentions)
 - Every cited item's date matches the target date exactly
 - No section was padded to look fuller than what was actually found
 - Layout is a numbered text list, not a card grid, and stays legible even when a section is
   short
-- No SNS/social-media section — that was intentionally removed, don't add it back
+- No SNS/social-media section — Section 2 is news coverage of the Mayor, not his own accounts
