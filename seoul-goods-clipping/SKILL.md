@@ -69,9 +69,28 @@ items, list 2.
 ## Section 2 — 시장 동향
 
 News coverage of the Mayor's own public activities, statements, or schedule for the target
-date — an event he attended, a policy he personally announced, a remark he made, an interview.
-Search "오세훈" and "오세훈 시장" (or "오세훈 서울시장") with the date filter — if a different
-mayor is in office when this runs, use their name instead; don't assume the name is fixed.
+date — an event he attended, a policy he personally announced, a remark he made, an interview,
+a site visit. Search "오세훈" and "오세훈 시장" (or "오세훈 서울시장") with the date filter — if
+a different mayor is in office when this runs, use their name instead; don't assume the name
+is fixed.
+
+**Hard exclusion: no litigation, criminal proceedings, prosecution, or partisan political-
+scandal coverage, even if it's the top "오세훈" search result that day.** This clipping goes out
+automatically every morning via a messaging bot and gets forwarded to people outside the
+immediate team — a brand/comms team publishing daily coverage of the Mayor's own criminal
+trial (testimony, a verdict date, a defense argument) is a real reputational and organizational
+risk, not just an editorial judgment call, and there's no one reviewing it before it goes out.
+If a search for the Mayor's name turns up mostly this kind of story on a given day, that's a
+sign to include fewer items (even zero) rather than pad the section with it. This is not the
+same caution as the "skip photo-caption filler" rule below — that's about substance, this is
+about subject matter being categorically out of scope for an unattended, externally-shared
+daily.
+
+Beyond that hard exclusion, use judgment on ordinary political friction (e.g. a policy dispute
+with the city council) — it's not automatically excluded the way litigation is, but weigh
+whether it's the kind of thing this document's actual readers (a brand/design-org team, not a
+political war room) need in their morning clipping, especially knowing it may be forwarded
+externally.
 
 This overlaps with Section 1 in subject matter (both are Seoul city-hall news) but the lens is
 different: Section 1 asks "is this relevant to the city/SDF broadly," Section 2 asks
@@ -86,7 +105,8 @@ ceremony isn't worth a slot on its own.
 
 Capture headline + 원문링크 + an optional one-line detail, same shape as Section 1 but without
 a 관련부서 tag (this section is about the person, not department routing). Cap at a reasonable
-count (5 is a sensible ceiling), same "don't pad" discipline.
+count (5 is a sensible ceiling), same "don't pad" discipline — a quiet or entirely
+litigation-dominated day should produce zero items here, not a stretch.
 
 ## Section 3 — 굿즈관련
 
@@ -143,6 +163,9 @@ repeat runs don't collide.
 - Section 2 items are genuinely about the Mayor's own activity/statement, not just any
   city-hall story that happens to mention him, and no single story sits in both Section 1
   and Section 2
+- **No Section 2 item is about litigation, a criminal case, prosecution, or a political
+  scandal** — that's a hard exclusion, not a judgment call, given this goes out unattended
+  and gets forwarded externally
 - Section 3 items are genuine dated goods/merch news, unrestricted by brand, but still real
   news (not incidental mentions)
 - Every cited item's date matches the target date exactly
