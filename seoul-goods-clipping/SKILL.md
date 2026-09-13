@@ -125,6 +125,16 @@ Search "굿즈" directly with the date filter (yes, it's noisy — skim past K-p
 convention coverage for the retail-collab/product-launch items) plus more targeted phrases
 like "굿즈 콜라보", "굿즈 완판", "굿즈 출시" to catch the sharper hits faster.
 
+**Also specifically search Seoul's own brand terms — 서울마이소울, 해치, 서울굿즈,
+DDP디자인스토어 — even though this section isn't restricted to them.** An earlier version of
+this skill searched exactly these terms as its whole scope; when the skill widened to general
+goods news, a genuinely on-brand story (e.g. a profile of the city official who built the
+서울마이소울/해치/서울굿즈 brand strategy) got missed because the generic "굿즈" search alone
+buried it under national retail/K-pop/gaming noise. These four terms are cheap, low-noise
+searches precisely because they're specific — always run them alongside the generic ones, and
+when they turn up a real hit, it's usually the most relevant item in this section, not just
+one candidate among many equals.
+
 Cap at a reasonable count (5 is a sensible ceiling), same padding discipline as elsewhere.
 
 ## Verification (all sections)
