@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>서울굿즈 클리핑 · 2026-09-13</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --red: #CC0000;
+    --red-dark: #9b0000;
+    --navy: #00253E;
+    --paper: #ffffff;
+    --page-bg: #eceef0;
+    --line: #d9dee5;
+    --muted: #5a6370;
+    --soft: #f5f6f8;
+    --tint: #fdf3f3;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --red: #ff5c5c;
+      --red-dark: #ff8080;
+      --navy: #e8edf2;
+      --paper: #141a21;
+      --page-bg: #0b0e12;
+      --line: #2a323c;
+      --muted: #97a3b0;
+      --soft: #1b222a;
+      --tint: #2a1618;
+    }
+  }
+  :root[data-theme="dark"] {
+    --red: #ff5c5c;
+    --red-dark: #ff8080;
+    --navy: #e8edf2;
+    --paper: #141a21;
+    --page-bg: #0b0e12;
+    --line: #2a323c;
+    --muted: #97a3b0;
+    --soft: #1b222a;
+    --tint: #2a1618;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--page-bg);
+    color: var(--navy);
+    font-family: "Inter", "Apple SD Gothic Neo", "Malgun Gothic", -apple-system, "Segoe UI", sans-serif;
+    padding: 40px 20px;
+    word-break: keep-all;
+  }
+
+  .sheet {
+    max-width: 760px;
+    margin: 0 auto;
+    background: var(--paper);
+    box-shadow: 0 30px 60px -30px rgba(0,37,62,.35);
+    position: relative;
+    overflow: hidden;
+    padding: 0 0 36px;
+  }
+  .top-bar { height: 6px; background: var(--red); }
+
+  header.cover { padding: 34px 40px 26px; border-bottom: 1px solid var(--line); }
+  header.cover .eyebrow {
+    font-size: 11px; letter-spacing: .3em; text-transform: uppercase;
+    color: var(--red); font-weight: 700; margin-bottom: 10px;
+  }
+  header.cover h1 {
+    font-size: 30px; font-weight: 800; letter-spacing: -.02em;
+    color: var(--navy); margin: 0 0 8px; line-height: 1.15;
+  }
+  header.cover .sub { color: var(--muted); font-size: 13px; font-weight: 600; letter-spacing: .05em; }
+  header.cover .note {
+    margin-top: 14px; font-size: 12px; line-height: 1.7; color: var(--muted);
+    background: var(--soft); border-left: 3px solid var(--red); padding: 10px 14px;
+  }
+
+  section.block { padding: 30px 40px 6px; }
+
+  .section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; }
+  .section-head .sec-title-wrap { display: flex; align-items: baseline; gap: 12px; }
+  .sec-num { font-size: 26px; font-weight: 800; color: var(--red); line-height: 1; }
+  .sec-title-wrap h2 {
+    font-size: 18px; font-weight: 700; color: var(--navy); margin: 0;
+    letter-spacing: -.01em;
+  }
+  .sec-eyebrow {
+    font-size: 10px; letter-spacing: .25em; text-transform: uppercase;
+    color: var(--muted); font-weight: 700; margin-bottom: 2px;
+  }
+  .sec-stat { text-align: right; flex: none; }
+  .sec-stat .stat-num { font-size: 26px; font-weight: 800; color: var(--red); line-height: 1; }
+  .sec-stat .stat-label { font-size: 10px; letter-spacing: .15em; color: var(--muted); font-weight: 700; }
+
+  .head-rule { width: 48px; height: 3px; background: var(--red); margin: 14px 0 22px; }
+
+  .item {
+    display: flex;
+    gap: 14px;
+    padding: 16px 0;
+    border-top: 1px solid var(--line);
+    text-decoration: none;
+    color: inherit;
+  }
+  .item:first-child { border-top: none; }
+
+  .item .item-num { font-size: 13px; font-weight: 800; color: var(--red); flex: none; padding-top: 1px; }
+
+  .item .item-body { flex: 1; min-width: 0; }
+  .item .item-top { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+  .item .headline { font-size: 15px; font-weight: 700; color: var(--navy); letter-spacing: -.005em; line-height: 1.45; }
+  .item:hover .headline { color: var(--red); }
+
+  .item .dept {
+    display: inline-block;
+    font-size: 10px; font-weight: 700; letter-spacing: .04em;
+    color: var(--red); background: var(--tint);
+    border-radius: 3px; padding: 2px 7px;
+  }
+
+  .item .detail { font-size: 13px; color: var(--muted); line-height: 1.65; margin-top: 5px; }
+  .item .detail .outlet { color: var(--navy); font-weight: 600; }
+
+  .empty-line { font-size: 13.5px; color: var(--muted); padding: 16px 0; line-height: 1.7; }
+
+  .sheet-footer {
+    margin-top: 20px; padding: 16px 40px 0;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 2px solid var(--navy);
+  }
+  .sheet-footer span {
+    font-size: 10px; letter-spacing: .15em; text-transform: uppercase;
+    color: var(--muted); font-weight: 700;
+  }
+
+  @media (max-width: 520px) {
+    header.cover, section.block, .sheet-footer { padding-left: 22px; padding-right: 22px; }
+    header.cover h1 { font-size: 24px; }
+    .item .headline { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="top-bar"></div>
+
+  <header class="cover">
+    <div class="eyebrow">Seoul Goods · Daily Clipping</div>
+    <h1>서울굿즈 클리핑</h1>
+    <div class="sub">2026-09-13 (일)</div>
+    <div class="note">
+      검색 방법: 다음(Daum) 뉴스 검색은 이 환경의 네트워크 정책으로 차단되어 접속 불가 확인 후,
+      WebSearch로 대체 진행했습니다. 다만 개별 기사 원문 접속(WebFetch)도 이 환경에서 차단되어
+      있어 SKILL.md가 요구하는 "기사 바이라인/날짜 원문 대조 검증"을 수행할 수 없었습니다.
+      검색 과정에서 WebSearch 요약이 날짜를 실제 근거 없이 지어낸 사례(요일 모순)를 발견해 폐기했고,
+      이후 나머지 후보들도 대상 날짜(2026-09-13)와 정확히 일치한다고 자신 있게 확인할 수 없어
+      싣지 않았습니다. 개수를 채우기보다 미확인 항목을 배제하는 쪽을 택했습니다.
+    </div>
+  </header>
+
+  <!-- Section 1: 언론보도 (市·SDF 관련) -->
+  <section class="block">
+    <div class="section-head">
+      <div class="sec-title-wrap">
+        <span class="sec-num">01</span>
+        <div>
+          <div class="sec-eyebrow">Press Coverage</div>
+          <h2>언론보도 (市·SDF 관련)</h2>
+        </div>
+      </div>
+      <div class="sec-stat"><span class="stat-num">0</span><span class="stat-label">건</span></div>
+    </div>
+    <div class="head-rule"></div>
+
+    <div class="empty-line">
+      어제자(2026-09-13) 관련 보도 없음 — "서울시"·"서울디자인재단"·"SDF" 검색에서 대상 날짜에
+      정확히 부합하는 것으로 확인된 신뢰 가능한 기사를 찾지 못했습니다. (가장 근접한 후보였던
+      'G3 서울플랜' 관련 보도는 9월 10일자로 대상 날짜가 아니어서 제외)
+    </div>
+  </section>
+
+  <!-- Section 2: 시장 동향 -->
+  <section class="block">
+    <div class="section-head">
+      <div class="sec-title-wrap">
+        <span class="sec-num">02</span>
+        <div>
+          <div class="sec-eyebrow">Mayor's Activity</div>
+          <h2>시장 동향</h2>
+        </div>
+      </div>
+      <div class="sec-stat"><span class="stat-num">0</span><span class="stat-label">건</span></div>
+    </div>
+    <div class="head-rule"></div>
+
+    <div class="empty-line">
+      어제자(2026-09-13) 관련 보도 없음 — "오세훈"·"오세훈 시장" 검색 결과 중 대상 날짜와 일치가
+      확인된 항목이 없었습니다. 검색 중 한 요약 결과가 9월 13일 행사 참석 내용을 제시했으나
+      요일 표기가 서로 모순되어(월요일/토요일 동시 언급, 실제로는 일요일) 근거 없는 서술로 판단해
+      폐기했습니다. 'DAILY· 트라이 에브리싱' 참석 보도는 9월 9일자로 대상 날짜가 아니어서 제외.
+    </div>
+  </section>
+
+  <!-- Section 3: 굿즈관련 -->
+  <section class="block">
+    <div class="section-head">
+      <div class="sec-title-wrap">
+        <span class="sec-num">03</span>
+        <div>
+          <div class="sec-eyebrow">Goods Trend</div>
+          <h2>굿즈관련</h2>
+        </div>
+      </div>
+      <div class="sec-stat"><span class="stat-num">0</span><span class="stat-label">건</span></div>
+    </div>
+    <div class="head-rule"></div>
+
+    <div class="empty-line">
+      어제자(2026-09-13) 관련 보도 없음 — "굿즈", "굿즈 콜라보/완판/출시", "서울마이소울",
+      "해치", "서울굿즈", "DDP디자인스토어" 검색에서 나온 후보 대부분은 (a) 날짜가 대상일과
+      다르거나(해치·서울마이소울 플래그십 스토어 관련은 9월 1일·9일자), (b) 게임 스킨 콜라보처럼
+      SKILL.md가 노이즈로 명시한 카테고리이거나(예: 오버워치x르세라핌 콜라보), (c) 뉴스매체가 아닌
+      팬 운영 정보성 사이트(굿즈 상영회 정보 블로그)여서 인용 가능한 출처 기준을 충족하지 못해
+      제외했습니다.
+    </div>
+  </section>
+
+  <div class="sheet-footer">
+    <span>Brand Team</span>
+    <span>2026-09-13</span>
+  </div>
+</div>
+</body>
+</html>
