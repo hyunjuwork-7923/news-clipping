@@ -5,210 +5,230 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700&family=Noto+Sans+KR:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <title>서울 클리핑 · {{TARGET_DATE}}</title>
 <style>
+  /*
+    Palette/type modeled on a "Bain Red" consulting-deck style the user referenced
+    (slide.airoasting.com/templates/bain-red): --red #CC0000 / --navy #00253E, bold
+    condensed-tracking sans, thin rules, red top bar, uppercase eyebrows.
+    That deck uses "Pretendard Variable" for Korean, which isn't on the Google Fonts
+    allowlist this page can load from — Pretendard is deliberately close to Apple SD
+    Gothic Neo/Malgun Gothic, so falling back to those system fonts for Korean text
+    (with Inter loaded for Latin/numerals, matching the reference) reads the same family.
+  */
   :root {
     color-scheme: light dark;
-    --bg: #faf7f2;
-    --surface: #faf7f2;
-    --rule: #ddd4c6;
-    --rule-strong: #c7bca8;
-    --text: #221f1c;
-    --text-muted: #746c60;
-    --accent: #b5482e;
-    --dept-bg: #efe9dd;
-    --dept-text: #5a5245;
+    --red: #CC0000;
+    --red-dark: #9b0000;
+    --navy: #00253E;
+    --paper: #ffffff;
+    --page-bg: #eceef0;
+    --line: #d9dee5;
+    --muted: #5a6370;
+    --soft: #f5f6f8;
+    --tint: #fdf3f3;
   }
 
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-      --bg: #1c1a17;
-      --surface: #1c1a17;
-      --rule: #3a352c;
-      --rule-strong: #4a4436;
-      --text: #f2ede4;
-      --text-muted: #a89e8e;
-      --accent: #e0805f;
-      --dept-bg: #2c2820;
-      --dept-text: #c9bfae;
+      --red: #ff5c5c;
+      --red-dark: #ff8080;
+      --navy: #e8edf2;
+      --paper: #141a21;
+      --page-bg: #0b0e12;
+      --line: #2a323c;
+      --muted: #97a3b0;
+      --soft: #1b222a;
+      --tint: #2a1618;
     }
   }
   :root[data-theme="dark"] {
-    --bg: #1c1a17;
-    --surface: #1c1a17;
-    --rule: #3a352c;
-    --rule-strong: #4a4436;
-    --text: #f2ede4;
-    --text-muted: #a89e8e;
-    --accent: #e0805f;
-    --dept-bg: #2c2820;
-    --dept-text: #c9bfae;
+    --red: #ff5c5c;
+    --red-dark: #ff8080;
+    --navy: #e8edf2;
+    --paper: #141a21;
+    --page-bg: #0b0e12;
+    --line: #2a323c;
+    --muted: #97a3b0;
+    --soft: #1b222a;
+    --tint: #2a1618;
   }
 
   * { box-sizing: border-box; }
   body {
     margin: 0;
-    background: var(--bg);
-    color: var(--text);
-    font-family: "Noto Sans KR", -apple-system, "Segoe UI", "Malgun Gothic", sans-serif;
-    padding: 56px 24px 80px;
+    background: var(--page-bg);
+    color: var(--navy);
+    font-family: "Inter", "Apple SD Gothic Neo", "Malgun Gothic", -apple-system, "Segoe UI", sans-serif;
+    padding: 40px 20px;
+    word-break: keep-all;
   }
 
-  .page { max-width: 680px; margin: 0 auto; }
-
-  header { margin-bottom: 44px; }
-  header .eyebrow {
-    font-size: 12px; letter-spacing: .16em; text-transform: uppercase;
-    color: var(--accent); font-weight: 600; margin-bottom: 10px;
+  .sheet {
+    max-width: 760px;
+    margin: 0 auto;
+    background: var(--paper);
+    box-shadow: 0 30px 60px -30px rgba(0,37,62,.35);
+    position: relative;
+    overflow: hidden;
+    padding: 0 0 36px;
   }
-  header h1 {
-    font-family: "Noto Serif KR", serif;
-    font-weight: 700;
-    font-size: 28px;
-    margin: 0 0 8px;
+  .top-bar { height: 6px; background: var(--red); }
+
+  header.cover { padding: 34px 40px 26px; border-bottom: 1px solid var(--line); }
+  header.cover .eyebrow {
+    font-size: 11px; letter-spacing: .3em; text-transform: uppercase;
+    color: var(--red); font-weight: 700; margin-bottom: 10px;
+  }
+  header.cover h1 {
+    font-size: 30px; font-weight: 800; letter-spacing: -.02em;
+    color: var(--navy); margin: 0 0 8px; line-height: 1.15;
+  }
+  header.cover .sub { color: var(--muted); font-size: 13px; font-weight: 600; letter-spacing: .05em; }
+
+  section.block { padding: 30px 40px 6px; }
+
+  .section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; }
+  .section-head .sec-title-wrap { display: flex; align-items: baseline; gap: 12px; }
+  .sec-num { font-size: 26px; font-weight: 800; color: var(--red); line-height: 1; }
+  .sec-title-wrap h2 {
+    font-size: 18px; font-weight: 700; color: var(--navy); margin: 0;
     letter-spacing: -.01em;
   }
-  header .sub { color: var(--text-muted); font-size: 14px; }
+  .sec-eyebrow {
+    font-size: 10px; letter-spacing: .25em; text-transform: uppercase;
+    color: var(--muted); font-weight: 700; margin-bottom: 2px;
+  }
+  .sec-stat { text-align: right; flex: none; }
+  .sec-stat .stat-num { font-size: 26px; font-weight: 800; color: var(--red); line-height: 1; }
+  .sec-stat .stat-label { font-size: 10px; letter-spacing: .15em; color: var(--muted); font-weight: 700; }
 
-  section.block { margin-bottom: 44px; }
-  section.block h2 {
-    font-family: "Noto Serif KR", serif;
-    font-weight: 700;
-    font-size: 17px;
-    margin: 0 0 4px;
-    padding-bottom: 12px;
-    border-bottom: 2px solid var(--rule-strong);
-  }
-  section.block .section-note {
-    font-size: 12px;
-    color: var(--text-muted);
-    margin: 10px 0 0;
-  }
+  .head-rule { width: 48px; height: 3px; background: var(--red); margin: 14px 0 22px; }
 
   .item {
-    display: block;
-    padding: 18px 0;
-    border-bottom: 1px solid var(--rule);
-  }
-  .item:last-child { border-bottom: none; }
-
-  .item .num {
-    font-size: 12px;
-    color: var(--text-muted);
-    font-weight: 600;
-    margin-right: 6px;
-  }
-  .item .headline {
-    font-family: "Noto Serif KR", serif;
-    font-weight: 500;
-    font-size: 16.5px;
-    line-height: 1.5;
-    color: inherit;
+    display: flex;
+    gap: 14px;
+    padding: 16px 0;
+    border-top: 1px solid var(--line);
     text-decoration: none;
+    color: inherit;
   }
-  .item a.headline:hover { color: var(--accent); }
+  .item:first-child { border-top: none; }
+
+  .item .item-num { font-size: 13px; font-weight: 800; color: var(--red); flex: none; padding-top: 1px; }
+
+  .item .item-body { flex: 1; min-width: 0; }
+  .item .item-top { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+  .item .headline { font-size: 15px; font-weight: 700; color: var(--navy); letter-spacing: -.005em; line-height: 1.45; }
+  .item:hover .headline { color: var(--red); }
 
   .item .dept {
     display: inline-block;
-    font-size: 11px;
-    color: var(--dept-text);
-    background: var(--dept-bg);
-    border-radius: 4px;
-    padding: 1px 7px;
-    margin-left: 8px;
-    vertical-align: 1px;
+    font-size: 10px; font-weight: 700; letter-spacing: .04em;
+    color: var(--red); background: var(--tint);
+    border-radius: 3px; padding: 2px 7px;
   }
 
-  .item .detail {
-    font-size: 13.5px;
-    color: var(--text-muted);
-    line-height: 1.6;
-    margin: 6px 0 0 20px;
+  .item .detail { font-size: 13px; color: var(--muted); line-height: 1.65; margin-top: 5px; }
+  .item .detail .outlet { color: var(--navy); font-weight: 600; }
+
+  .empty-line { font-size: 13.5px; color: var(--muted); padding: 16px 0; }
+
+  .sheet-footer {
+    margin-top: 20px; padding: 16px 40px 0;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 2px solid var(--navy);
+  }
+  .sheet-footer span {
+    font-size: 10px; letter-spacing: .15em; text-transform: uppercase;
+    color: var(--muted); font-weight: 700;
   }
 
-  ul.plain-list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  ul.plain-list li {
-    padding: 10px 0;
-    border-bottom: 1px solid var(--rule);
-    font-size: 14.5px;
-    line-height: 1.6;
-    color: var(--text);
-  }
-  ul.plain-list li:last-child { border-bottom: none; }
-  ul.plain-list li::before {
-    content: "—";
-    color: var(--text-muted);
-    margin-right: 8px;
-  }
-
-  @media (max-width: 480px) {
-    body { padding: 40px 18px 64px; }
-    header h1 { font-size: 23px; }
-    .item .headline { font-size: 15.5px; }
+  @media (max-width: 520px) {
+    header.cover, section.block, .sheet-footer { padding-left: 22px; padding-right: 22px; }
+    header.cover h1 { font-size: 24px; }
+    .item .headline { font-size: 14px; }
   }
 </style>
 </head>
 <body>
-<div class="page">
+<div class="sheet">
+  <div class="top-bar"></div>
 
-  <header>
+  <header class="cover">
     <div class="eyebrow">Seoul City · Daily Clipping</div>
     <h1>서울 클리핑</h1>
     <div class="sub">{{TARGET_DATE}}</div>
   </header>
 
   <!-- Section 1: 언론보도 (市·SDF 관련) — general city/SDF press, NOT limited to goods.
-       Each item is an <a class="item"> so the whole row links to 원문. 관련부서 is a small
-       badge; omit it entirely (don't guess) if you can't confidently infer the department.
+       {{count}} = number of items actually included (drives the big red stat number).
+       관련부서 badge: omit entirely (don't guess) if you can't confidently infer the department.
        .detail is optional — only include when the headline alone doesn't convey a key fact. -->
   <section class="block">
-    <h2>1. 언론보도 (市·SDF 관련)</h2>
+    <div class="section-head">
+      <div class="sec-title-wrap">
+        <span class="sec-num">01</span>
+        <div>
+          <div class="sec-eyebrow">Press Coverage</div>
+          <h2>언론보도 (市·SDF 관련)</h2>
+        </div>
+      </div>
+      <div class="sec-stat"><span class="stat-num">{{count}}</span><span class="stat-label">건</span></div>
+    </div>
+    <div class="head-rule"></div>
 
     <a class="item" href="{{URL}}" target="_blank" rel="noopener">
-      <span class="num">1.1</span><span class="headline">{{기사 제목}}</span><span class="dept">{{관련부서}}</span>
-      <div class="detail">{{주요내용 — 선택사항, 헤드라인에 없는 핵심 사실 한 줄}} ({{매체명}})</div>
+      <span class="item-num">1.1</span>
+      <div class="item-body">
+        <div class="item-top">
+          <span class="headline">{{기사 제목}}</span>
+          <span class="dept">{{관련부서}}</span>
+        </div>
+        <div class="detail">{{주요내용 — 선택사항}} <span class="outlet">({{매체명}})</span></div>
+      </div>
     </a>
 
     <!-- ...repeat 1.2, 1.3... up to a reasonable count (5 is a sensible ceiling).
-         If zero qualify, replace the items with a single sentence inside this section
-         saying so — keep the "1. 언론보도" header visible either way. -->
+         If zero qualify, replace the items with a single <div class="empty-line"> saying so —
+         keep the section header visible either way. -->
 
   </section>
 
-  <!-- Section 2: SNS채널 — official social posts. This session generally CANNOT verify
-       actual post content without direct account access (logged-out platform pages don't
-       expose the feed). Say that plainly rather than inventing post descriptions — see the
-       section-note pattern below. Only state something as a confirmed post if you actually
-       found it (e.g. a news article embedding or describing the post itself). -->
-  <section class="block">
-    <h2>2. SNS채널 (주요 게시건)</h2>
-    <div class="section-note">
-      {{이 세션에서 실제로 확인 가능했던 것과 확인 불가능했던 것을 여기에 명시}}
-    </div>
-    <ul class="plain-list">
-      <li>{{확인된 사실만 — 추정 내용을 사실처럼 적지 말 것}}</li>
-    </ul>
-  </section>
-
-  <!-- Section 3: 굿즈관련 — general Korean goods/merch trend news, NOT restricted to Seoul's
+  <!-- Section 2: 굿즈관련 — general Korean goods/merch trend news, NOT restricted to Seoul's
        own brand. A genuine launch/collab/completion-sellout story anywhere in Korea counts. -->
   <section class="block">
-    <h2>3. 굿즈관련</h2>
+    <div class="section-head">
+      <div class="sec-title-wrap">
+        <span class="sec-num">02</span>
+        <div>
+          <div class="sec-eyebrow">Goods Trend</div>
+          <h2>굿즈관련</h2>
+        </div>
+      </div>
+      <div class="sec-stat"><span class="stat-num">{{count}}</span><span class="stat-label">건</span></div>
+    </div>
+    <div class="head-rule"></div>
 
     <a class="item" href="{{URL}}" target="_blank" rel="noopener">
-      <span class="headline">{{기사 제목}}</span>
-      <div class="detail">{{한국어 요약 1~2문장}} ({{매체명}})</div>
+      <span class="item-num">2.1</span>
+      <div class="item-body">
+        <div class="item-top">
+          <span class="headline">{{기사 제목}}</span>
+        </div>
+        <div class="detail">{{한국어 요약 1~2문장}} <span class="outlet">({{매체명}})</span></div>
+      </div>
     </a>
 
     <!-- ...repeat up to a reasonable count (5 is a sensible ceiling). -->
 
   </section>
 
+  <div class="sheet-footer">
+    <span>Seoul Goods Clipping</span>
+    <span>{{TARGET_DATE}}</span>
+  </div>
 </div>
 </body>
 </html>
