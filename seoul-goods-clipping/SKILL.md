@@ -25,11 +25,13 @@ Don't fold Section 2 back into raw SNS monitoring without real account access.)
 Take today's date from the environment/system context in KST — call this PUBLISH_DATE (the day
 this clipping is actually being generated/sent). Subtract one day from it to get TARGET_DATE —
 that's the calendar date all three sections' news must be dated on (this clipping runs each
-morning and covers the previous day's news, like a print edition). The header shows PUBLISH_DATE
-as "{{PUBLISH_DATE}} 발행" (per the user's explicit call on this — the header is a publication
-date line, not a content date line); TARGET_DATE still appears in the page `<title>` and the
-footer so the content date isn't lost, and should still be stated in any chat-side summary of
-the clipping so it's clear which day's news is covered.
+morning and covers the previous day's news, like a print edition). The header shows only
+PUBLISH_DATE, as "{{PUBLISH_DATE}} 발행" (per the user's explicit call on this — the header is a
+publication date line, not a content date line). TARGET_DATE still appears in the page `<title>`
+and the footer, where both dates are spelled out together as
+"{{TARGET_DATE}}자 스크랩 · {{PUBLISH_DATE}} 발행", so the content date isn't lost — and it
+should still be stated in any chat-side summary of the clipping so it's clear which day's news
+is covered.
 
 No outlet whitelist anywhere in this skill — any legitimate Korean news outlet counts, not a
 curated Tier-1 list. What still doesn't count as a citable source: government PR channels
