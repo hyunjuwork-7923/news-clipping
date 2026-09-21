@@ -22,8 +22,15 @@ Don't fold Section 2 back into raw SNS monitoring without real account access.)
 
 ## Common setup
 
-Take today's date from the environment/system context in KST and subtract one day — that's
-the target calendar date for all three sections. State it once at the top of the output.
+Take today's date from the environment/system context in KST — call this PUBLISH_DATE (the day
+this clipping is actually being generated/sent). Subtract one day from it to get TARGET_DATE —
+that's the calendar date all three sections' news must be dated on (this clipping runs each
+morning and covers the previous day's news, like a print edition). Since PUBLISH_DATE and
+TARGET_DATE are always different calendar days, state both clearly at the top of the output —
+don't show only TARGET_DATE, since a reader glancing at just one date could mistake it for
+"today's" clipping. The header shows TARGET_DATE as the primary date (that's what the content
+is about) with PUBLISH_DATE as a smaller "발행" note beneath it — see `assets/template.html`'s
+`{{TARGET_DATE}}`/`{{PUBLISH_DATE}}` header placeholders.
 
 No outlet whitelist anywhere in this skill — any legitimate Korean news outlet counts, not a
 curated Tier-1 list. What still doesn't count as a citable source: government PR channels
