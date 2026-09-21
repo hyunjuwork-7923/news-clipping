@@ -145,9 +145,12 @@ whenever you're searching, not a fixed date, so check the article's own timestam
 
 ## Build the text-centric HTML page
 
-Not a card grid — a numbered, editorial text list matching the real format: three headed
+Not a card grid — a numbered, editorial text list matching the real format: up to three headed
 sections ("01 언론보도 (市·SDF 관련)", "02 시장 동향", "03 굿즈관련"), sub-numbered items
-within Section 1 (1.1, 1.2...), and numbered lists for Sections 2 and 3 (2.1... / 3.1...).
+within each section (1.1, 1.2... / 2.1... / 3.1...). If a section ends up with zero items, drop
+it entirely (see the empty-section rule below) and renumber the sections and their sub-items
+sequentially from 01 — e.g. if Section 1 is empty, what was Section 2 becomes "01 시장 동향"
+with items 1.1, 1.2..., and what was Section 3 becomes "02 굿즈관련" with items 2.1, 2.2....
 Use `assets/template.html` as the starting structure — it's styled after a "Bain Red"
 consulting-deck look the user referenced (red #CC0000 / navy #00253E, bold sans headlines,
 thin rule dividers, uppercase tracked eyebrows, a big red stat number per section showing its
@@ -155,10 +158,12 @@ item count). Don't revert to serif headlines or a softer palette without the use
 Keep the visual polish even though the structure is closer to a working memo than a magazine
 page; it should read as considered, not decorative.
 
-If a section has zero qualifying items, keep the section header and say so plainly inside it
-("어제자 관련 보도 없음") rather than silently dropping the whole section — the section
-structure itself is part of what makes this the team's actual format, so it should always be
-visible even on a quiet day.
+If a section has zero qualifying items, drop that section entirely (header included) rather
+than showing an empty placeholder — don't leave a "어제자 관련 보도 없음" stub. Renumber the
+remaining sections sequentially starting from 01, and renumber their sub-items to match (see
+the numbering rule above). Still don't pad a section that has genuine items just to avoid this
+— a section with 1-2 real items stays as-is; only a section with zero qualifying items gets
+dropped.
 
 If this will be shown to the user in this session, publish it through whatever
 artifact-publishing convention the environment provides rather than leaving it as a bare
@@ -167,7 +172,9 @@ repeat runs don't collide.
 
 ## Sanity check before delivering
 
-- All three section headers are present, even on a section with zero items
+- Every remaining section header has at least one item; any section that had zero qualifying
+  items was dropped entirely (not shown as an empty stub) and the rest renumbered sequentially
+  from 01
 - Section 1 items are genuinely about Seoul City/SDF broadly (not filtered down to only
   goods-related ones) and only carry a 관련부서 tag where it's a confident inference
 - Section 2 items are genuinely about the Mayor's own activity/statement, not just any
