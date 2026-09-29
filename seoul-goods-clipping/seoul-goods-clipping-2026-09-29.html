@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>서울굿즈 클리핑 · 2026.09.29</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --red: #CC0000;
+    --red-dark: #9b0000;
+    --navy: #00253E;
+    --paper: #ffffff;
+    --page-bg: #eceef0;
+    --line: #d9dee5;
+    --muted: #5a6370;
+    --soft: #f5f6f8;
+    --tint: #fdf3f3;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --red: #ff5c5c;
+      --red-dark: #ff8080;
+      --navy: #e8edf2;
+      --paper: #141a21;
+      --page-bg: #0b0e12;
+      --line: #2a323c;
+      --muted: #97a3b0;
+      --soft: #1b222a;
+      --tint: #2a1618;
+    }
+  }
+  :root[data-theme="dark"] {
+    --red: #ff5c5c;
+    --red-dark: #ff8080;
+    --navy: #e8edf2;
+    --paper: #141a21;
+    --page-bg: #0b0e12;
+    --line: #2a323c;
+    --muted: #97a3b0;
+    --soft: #1b222a;
+    --tint: #2a1618;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--page-bg);
+    color: var(--navy);
+    font-family: "Inter", "Apple SD Gothic Neo", "Malgun Gothic", -apple-system, "Segoe UI", sans-serif;
+    padding: 40px 20px;
+    word-break: keep-all;
+  }
+
+  .sheet {
+    max-width: 760px;
+    margin: 0 auto;
+    background: var(--paper);
+    box-shadow: 0 30px 60px -30px rgba(0,37,62,.35);
+    position: relative;
+    overflow: hidden;
+    padding: 0 0 36px;
+  }
+  .top-bar { height: 6px; background: var(--red); }
+
+  header.cover { padding: 34px 40px 26px; border-bottom: 1px solid var(--line); }
+  header.cover .eyebrow {
+    font-size: 11px; letter-spacing: .3em; text-transform: uppercase;
+    color: var(--red); font-weight: 700; margin-bottom: 10px;
+  }
+  header.cover h1 {
+    font-size: 30px; font-weight: 800; letter-spacing: -.02em;
+    color: var(--navy); margin: 0 0 8px; line-height: 1.15;
+  }
+  header.cover .sub { color: var(--muted); font-size: 13px; font-weight: 600; letter-spacing: .05em; }
+
+  section.block { padding: 30px 40px 6px; }
+
+  .section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; }
+  .section-head .sec-title-wrap { display: flex; align-items: baseline; gap: 12px; }
+  .sec-num { font-size: 26px; font-weight: 800; color: var(--red); line-height: 1; }
+  .sec-title-wrap h2 {
+    font-size: 18px; font-weight: 700; color: var(--navy); margin: 0;
+    letter-spacing: -.01em;
+  }
+  .sec-eyebrow {
+    font-size: 10px; letter-spacing: .25em; text-transform: uppercase;
+    color: var(--muted); font-weight: 700; margin-bottom: 2px;
+  }
+  .sec-stat { text-align: right; flex: none; }
+  .sec-stat .stat-num { font-size: 26px; font-weight: 800; color: var(--red); line-height: 1; }
+  .sec-stat .stat-label { font-size: 10px; letter-spacing: .15em; color: var(--muted); font-weight: 700; }
+
+  .head-rule { width: 48px; height: 3px; background: var(--red); margin: 14px 0 22px; }
+
+  .item {
+    display: flex;
+    gap: 14px;
+    padding: 16px 0;
+    border-top: 1px solid var(--line);
+    text-decoration: none;
+    color: inherit;
+  }
+  .item:first-child { border-top: none; }
+
+  .item .item-num { font-size: 13px; font-weight: 800; color: var(--red); flex: none; padding-top: 1px; }
+
+  .item .item-body { flex: 1; min-width: 0; }
+  .item .item-top { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+  .item .headline { font-size: 15px; font-weight: 700; color: var(--navy); letter-spacing: -.005em; line-height: 1.45; }
+  .item:hover .headline { color: var(--red); }
+
+  .item .dept {
+    display: inline-block;
+    font-size: 10px; font-weight: 700; letter-spacing: .04em;
+    color: var(--red); background: var(--tint);
+    border-radius: 3px; padding: 2px 7px;
+  }
+
+  .item .detail { font-size: 13px; color: var(--muted); line-height: 1.65; margin-top: 5px; }
+  .item .detail .outlet { color: var(--navy); font-weight: 600; }
+
+  .empty-line { font-size: 13.5px; color: var(--muted); padding: 16px 0; }
+
+  .note {
+    margin: 0 40px 0; padding: 10px 14px; background: var(--soft); border-radius: 4px;
+    font-size: 11.5px; color: var(--muted); line-height: 1.6;
+  }
+
+  .sheet-footer {
+    margin-top: 20px; padding: 16px 40px 0;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 2px solid var(--navy);
+  }
+  .sheet-footer span {
+    font-size: 10px; letter-spacing: .15em; text-transform: uppercase;
+    color: var(--muted); font-weight: 700;
+  }
+
+  @media (max-width: 520px) {
+    header.cover, section.block, .sheet-footer { padding-left: 22px; padding-right: 22px; }
+    header.cover h1 { font-size: 24px; }
+    .item .headline { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="top-bar"></div>
+
+  <header class="cover">
+    <div class="eyebrow">Seoul Goods · Daily Clipping</div>
+    <h1>서울굿즈 클리핑</h1>
+    <div class="sub">2026.09.29 (화)</div>
+  </header>
+
+  <section class="block">
+    <div class="section-head">
+      <div class="sec-title-wrap">
+        <span class="sec-num">01</span>
+        <div>
+          <div class="sec-eyebrow">Press Coverage</div>
+          <h2>언론보도 (市·SDF 관련)</h2>
+        </div>
+      </div>
+      <div class="sec-stat"><span class="stat-num">5</span><span class="stat-label">건</span></div>
+    </div>
+    <div class="head-rule"></div>
+
+    <a class="item" href="https://www.etoday.co.kr/news/view/2630223" target="_blank" rel="noopener">
+      <span class="item-num">1.1</span>
+      <div class="item-body">
+        <div class="item-top">
+          <span class="headline">서울시, 가족돌봄청소년·청년 자기돌봄비 지원…생애 1회 200만원</span>
+        </div>
+        <div class="detail">10월 1일부터 서울복지포털서 신청, 만 13~34세 중위소득 100% 이하 140명에 카드포인트로 지급 <span class="outlet">(이투데이)</span></div>
+      </div>
+    </a>
+
+    <a class="item" href="https://www.newspim.com/news/view/20260929000224" target="_blank" rel="noopener">
+      <span class="item-num">1.2</span>
+      <div class="item-body">
+        <div class="item-top">
+          <span class="headline">서울 23개 전통시장·상점가서 야간 미식·문화축제</span>
+          <span class="dept">소상공인정책과</span>
+        </div>
+        <div class="detail">10월부터 12개 자치구서 개최, 해방촌 신흥시장 한복 런웨이 등 야간경제 활성화와 연계 <span class="outlet">(뉴스핌)</span></div>
+      </div>
+    </a>
+
+    <a class="item" href="https://www.khan.co.kr/article/202609291053001/" target="_blank" rel="noopener">
+      <span class="item-num">1.3</span>
+      <div class="item-body">
+        <div class="item-top">
+          <span class="headline">한강에서 배달음식 주문하면 3000원 할인…'서울배달+땡겨요' 혜택 확대</span>
+          <span class="dept">한강사업본부</span>
+        </div>
+        <div class="detail">10월 1일~11월 30일 한강공원 11곳 17개 배달존 대상, 서울사랑상품권 환급도 두 배로 확대 <span class="outlet">(경향신문)</span></div>
+      </div>
+    </a>
+
+    <a class="item" href="https://www.asiatoday.co.kr/kn/view.php?key=20260929010010212" target="_blank" rel="noopener">
+      <span class="item-num">1.4</span>
+      <div class="item-body">
+        <div class="item-top">
+          <span class="headline">일본인 관광객, 서울 짧게·자주 온다…'탄환여행' 확산</span>
+          <span class="dept">관광정책과</span>
+        </div>
+        <div class="detail">일본인 평균 체류 3.5일·재방문율 71%, 서울시 '24시간 활력경제도시' 정책과 연계해 심야 관광콘텐츠 확대 계획 <span class="outlet">(아시아투데이)</span></div>
+      </div>
+    </a>
+
+    <a class="item" href="https://www.segye.com/newsView/20260929516066" target="_blank" rel="noopener">
+      <span class="item-num">1.5</span>
+      <div class="item-body">
+        <div class="item-top">
+          <span class="headline">서울시, 판소리·악기장 보유자 3명 새로 인정</span>
+          <span class="dept">문화재정책과</span>
+        </div>
+        <div class="detail">판소리 심청가 조주선·적벽가 채수정, 악기장 류창선을 무형유산 보유자로 신규 인정 <span class="outlet">(세계일보)</span></div>
+      </div>
+    </a>
+
+  </section>
+
+  <section class="block">
+    <div class="section-head">
+      <div class="sec-title-wrap">
+        <span class="sec-num">02</span>
+        <div>
+          <div class="sec-eyebrow">Mayor's Activity</div>
+          <h2>시장 동향</h2>
+        </div>
+      </div>
+      <div class="sec-stat"><span class="stat-num">1</span><span class="stat-label">건</span></div>
+    </div>
+    <div class="head-rule"></div>
+
+    <a class="item" href="https://www.khan.co.kr/article/202609291508001/" target="_blank" rel="noopener">
+      <span class="item-num">2.1</span>
+      <div class="item-body">
+        <div class="item-top">
+          <span class="headline">오세훈 시장, 충북 충주시와 '서울런' 업무협약 체결…교육 사다리 놓는다</span>
+        </div>
+        <div class="detail">충주시청서 협약식 후 오 시장이 직접 충주 시민·공무원 200여 명 대상 '삶의 질 특별시, 서울' 특강 진행. 서울런 모델의 8번째 타지자체 확산 사례 <span class="outlet">(경향신문)</span></div>
+      </div>
+    </a>
+
+  </section>
+
+  <section class="block">
+    <div class="section-head">
+      <div class="sec-title-wrap">
+        <span class="sec-num">03</span>
+        <div>
+          <div class="sec-eyebrow">Goods Trend</div>
+          <h2>굿즈관련</h2>
+        </div>
+      </div>
+      <div class="sec-stat"><span class="stat-num">2</span><span class="stat-label">건</span></div>
+    </div>
+    <div class="head-rule"></div>
+
+    <a class="item" href="https://www.webeconomy.co.kr/news/articleView.html?idxno=2319855" target="_blank" rel="noopener">
+      <span class="item-num">3.1</span>
+      <div class="item-body">
+        <div class="item-top">
+          <span class="headline">서울시, '서울마이소울 LED 키캡키링' 출시</span>
+        </div>
+        <div class="detail">1구·4구 두 종류, 개당 1만4900원. 9월 30일부터 서울시청 내 매장·주요 오프라인·온라인 판매 개시 <span class="outlet">(웹이코노미)</span></div>
+      </div>
+    </a>
+
+    <a class="item" href="https://www.newsen.com/news_view.php?uid=202609291554562410" target="_blank" rel="noopener">
+      <span class="item-num">3.2</span>
+      <div class="item-body">
+        <div class="item-top">
+          <span class="headline">하이브, 용산 사옥에 '2026 BTS 달마중' 팝업스토어 오픈</span>
+        </div>
+        <div class="detail">국립박물관문화재단과 협업한 굿즈 13종, 조선시대 '문자도' 재해석 디자인. 9월 29일~10월 11일 위버스 사전예약 후 입장 <span class="outlet">(뉴스엔)</span></div>
+      </div>
+    </a>
+
+  </section>
+
+  <div class="note">검색 방법: 이번 실행에서는 Daum 뉴스 검색(search.daum.net)이 네트워크 정책상 차단되어 WebSearch로 대체 검색함. 각 기사 URL에 포함된 게시일자(예: 20260929, /2026/09/29/)로 대상일 일치 여부를 확인함.</div>
+
+  <div class="sheet-footer">
+    <span>Brand Team</span>
+    <span>2026.09.29</span>
+  </div>
+</div>
+</body>
+</html>
