@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>서울굿즈 클리핑 · 2026.10.04</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --red: #CC0000;
+    --red-dark: #9b0000;
+    --navy: #00253E;
+    --paper: #ffffff;
+    --page-bg: #eceef0;
+    --line: #d9dee5;
+    --muted: #5a6370;
+    --soft: #f5f6f8;
+    --tint: #fdf3f3;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --red: #ff5c5c;
+      --red-dark: #ff8080;
+      --navy: #e8edf2;
+      --paper: #141a21;
+      --page-bg: #0b0e12;
+      --line: #2a323c;
+      --muted: #97a3b0;
+      --soft: #1b222a;
+      --tint: #2a1618;
+    }
+  }
+  :root[data-theme="dark"] {
+    --red: #ff5c5c;
+    --red-dark: #ff8080;
+    --navy: #e8edf2;
+    --paper: #141a21;
+    --page-bg: #0b0e12;
+    --line: #2a323c;
+    --muted: #97a3b0;
+    --soft: #1b222a;
+    --tint: #2a1618;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--page-bg);
+    color: var(--navy);
+    font-family: "Inter", "Apple SD Gothic Neo", "Malgun Gothic", -apple-system, "Segoe UI", sans-serif;
+    padding: 40px 20px;
+    word-break: keep-all;
+  }
+
+  .sheet {
+    max-width: 760px;
+    margin: 0 auto;
+    background: var(--paper);
+    box-shadow: 0 30px 60px -30px rgba(0,37,62,.35);
+    position: relative;
+    overflow: hidden;
+    padding: 0 0 36px;
+  }
+  .top-bar { height: 6px; background: var(--red); }
+
+  header.cover { padding: 34px 40px 26px; border-bottom: 1px solid var(--line); }
+  header.cover .eyebrow {
+    font-size: 11px; letter-spacing: .3em; text-transform: uppercase;
+    color: var(--red); font-weight: 700; margin-bottom: 10px;
+  }
+  header.cover h1 {
+    font-size: 30px; font-weight: 800; letter-spacing: -.02em;
+    color: var(--navy); margin: 0 0 8px; line-height: 1.15;
+  }
+  header.cover .sub { color: var(--muted); font-size: 13px; font-weight: 600; letter-spacing: .05em; }
+
+  section.block { padding: 30px 40px 6px; }
+
+  .section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; }
+  .section-head .sec-title-wrap { display: flex; align-items: baseline; gap: 12px; }
+  .sec-num { font-size: 26px; font-weight: 800; color: var(--red); line-height: 1; }
+  .sec-title-wrap h2 {
+    font-size: 18px; font-weight: 700; color: var(--navy); margin: 0;
+    letter-spacing: -.01em;
+  }
+  .sec-eyebrow {
+    font-size: 10px; letter-spacing: .25em; text-transform: uppercase;
+    color: var(--muted); font-weight: 700; margin-bottom: 2px;
+  }
+  .sec-stat { text-align: right; flex: none; }
+  .sec-stat .stat-num { font-size: 26px; font-weight: 800; color: var(--red); line-height: 1; }
+  .sec-stat .stat-label { font-size: 10px; letter-spacing: .15em; color: var(--muted); font-weight: 700; }
+
+  .head-rule { width: 48px; height: 3px; background: var(--red); margin: 14px 0 22px; }
+
+  .item {
+    display: flex;
+    gap: 14px;
+    padding: 16px 0;
+    border-top: 1px solid var(--line);
+    text-decoration: none;
+    color: inherit;
+  }
+  .item:first-child { border-top: none; }
+
+  .item .item-num { font-size: 13px; font-weight: 800; color: var(--red); flex: none; padding-top: 1px; }
+
+  .item .item-body { flex: 1; min-width: 0; }
+  .item .item-top { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+  .item .headline { font-size: 15px; font-weight: 700; color: var(--navy); letter-spacing: -.005em; line-height: 1.45; }
+  .item:hover .headline { color: var(--red); }
+
+  .item .dept {
+    display: inline-block;
+    font-size: 10px; font-weight: 700; letter-spacing: .04em;
+    color: var(--red); background: var(--tint);
+    border-radius: 3px; padding: 2px 7px;
+  }
+
+  .item .detail { font-size: 13px; color: var(--muted); line-height: 1.65; margin-top: 5px; }
+  .item .detail .outlet { color: var(--navy); font-weight: 600; }
+
+  .empty-line { font-size: 13.5px; color: var(--muted); padding: 16px 0; }
+
+  .note-line { font-size: 11.5px; color: var(--muted); padding: 10px 40px 0; }
+
+  .sheet-footer {
+    margin-top: 20px; padding: 16px 40px 0;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 2px solid var(--navy);
+  }
+  .sheet-footer span {
+    font-size: 10px; letter-spacing: .15em; text-transform: uppercase;
+    color: var(--muted); font-weight: 700;
+  }
+
+  @media (max-width: 520px) {
+    header.cover, section.block, .sheet-footer { padding-left: 22px; padding-right: 22px; }
+    header.cover h1 { font-size: 24px; }
+    .item .headline { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="top-bar"></div>
+
+  <header class="cover">
+    <div class="eyebrow">Seoul Goods · Daily Clipping</div>
+    <h1>서울굿즈 클리핑</h1>
+    <div class="sub">2026.10.04 (일)</div>
+  </header>
+
+  <!-- Section 1: 언론보도 (市·SDF 관련) -->
+  <section class="block">
+    <div class="section-head">
+      <div class="sec-title-wrap">
+        <span class="sec-num">01</span>
+        <div>
+          <div class="sec-eyebrow">Press Coverage</div>
+          <h2>언론보도 (市·SDF 관련)</h2>
+        </div>
+      </div>
+      <div class="sec-stat"><span class="stat-num">2</span><span class="stat-label">건</span></div>
+    </div>
+    <div class="head-rule"></div>
+
+    <a class="item" href="https://news.mtn.co.kr/news-detail/2026100423202561390" target="_blank" rel="noopener">
+      <span class="item-num">1.1</span>
+      <div class="item-body">
+        <div class="item-top">
+          <span class="headline">집값 안정·주택공급 시험대…국토부·서울시 국감 쟁점은</span>
+        </div>
+        <div class="detail">국회 국토위 국정감사에서 서울시 주택공급 목표의 실현 가능성, 정비사업 활성화 정책, GTX-A 삼성역 철근 누락 책임 소재가 쟁점으로 다뤄졌다. <span class="outlet">(MTN)</span></div>
+      </div>
+    </a>
+
+    <a class="item" href="https://www.ddaily.co.kr/page/view/2026100411434650075" target="_blank" rel="noopener">
+      <span class="item-num">1.2</span>
+      <div class="item-body">
+        <div class="item-top">
+          <span class="headline">"전월세시장 불안 해법 찾는다"…서울시, 7일 '서울주거포럼' 개최</span>
+          <span class="dept">주택정책실(추정)</span>
+        </div>
+        <div class="detail">서울시가 한국프레스센터에서 '전월세시장 현황 진단 및 안정화 방안 모색'을 주제로 전문가·시민이 참여하는 '2026 서울주거포럼'을 7일 연다고 4일 밝혔다. <span class="outlet">(디지털데일리)</span></div>
+      </div>
+    </a>
+
+  </section>
+
+  <!-- Section 2: 시장 동향 -->
+  <section class="block">
+    <div class="section-head">
+      <div class="sec-title-wrap">
+        <span class="sec-num">02</span>
+        <div>
+          <div class="sec-eyebrow">Mayor's Activity</div>
+          <h2>시장 동향</h2>
+        </div>
+      </div>
+      <div class="sec-stat"><span class="stat-num">2</span><span class="stat-label">건</span></div>
+    </div>
+    <div class="head-rule"></div>
+
+    <a class="item" href="https://view.asiae.co.kr/article/2026100410401225642" target="_blank" rel="noopener">
+      <span class="item-num">2.1</span>
+      <div class="item-body">
+        <div class="item-top">
+          <span class="headline">오세훈, 암살자(들) '탄흔 티켓'에 "인간 존엄 내던진 상업주의"</span>
+        </div>
+        <div class="detail">오세훈 서울시장이 영화 '암살자(들)' 메가박스 오리지널 티켓의 '탄흔' 디자인을 두고 SNS에 "인간의 존엄마저 포기한 저급한 상업주의는 용납될 수 없다"는 비판 글을 올렸다. <span class="outlet">(아시아경제)</span></div>
+      </div>
+    </a>
+
+    <a class="item" href="https://www.dailian.co.kr/news/view/1697812/%EC%98%A4%EC%84%B8%ED%9B%88-%EC%84%9C%EC%9A%B8%EC%8B%9C%EC%9E%A5-%EB%B6%81%EC%B4%8C-%EA%B3%B5%EA%B3%B5%ED%95%9C%EC%98%A5-%EB%B0%A9%EB%AC%B8%EC%A7%80-2026" target="_blank" rel="noopener">
+      <span class="item-num">2.2</span>
+      <div class="item-body">
+        <div class="item-top">
+          <span class="headline">오세훈 서울시장, 북촌 공공한옥 방문…"지역 특색 살린 한옥 거점 확충"</span>
+        </div>
+        <div class="detail">'서울한옥주간' 기간 북촌문화센터·한옥지원센터 등 5개소를 순회하며 한옥 보전·활용 성과를 확인했다. <span class="outlet">(데일리안)</span></div>
+      </div>
+    </a>
+
+  </section>
+
+  <!-- Section 3: 굿즈관련 -->
+  <section class="block">
+    <div class="section-head">
+      <div class="sec-title-wrap">
+        <span class="sec-num">03</span>
+        <div>
+          <div class="sec-eyebrow">Goods Trend</div>
+          <h2>굿즈관련</h2>
+        </div>
+      </div>
+      <div class="sec-stat"><span class="stat-num">1</span><span class="stat-label">건</span></div>
+    </div>
+    <div class="head-rule"></div>
+
+    <a class="item" href="https://edaily.co.kr/News/Read?mediaCodeNo=257&newsId=01712166645609640" target="_blank" rel="noopener">
+      <span class="item-num">3.1</span>
+      <div class="item-body">
+        <div class="item-top">
+          <span class="headline">메가박스, '암살자(들)' 탄흔 티켓 논란 사과…남은 굿즈 전량 폐기</span>
+        </div>
+        <div class="detail">총탄 흔적을 형상화해 역사적 비극을 상품화했다는 비판을 받은 오리지널 티켓 굿즈에 대해 메가박스가 공식 사과하고 잔여 수량을 전량 폐기하기로 했다. <span class="outlet">(이데일리)</span></div>
+      </div>
+    </a>
+
+  </section>
+
+  <div class="note-line">※ 이 환경에서는 Daum/Naver 뉴스 검색 접근이 모두 막혀 WebSearch로 대체 수집·검증함. 기사별 원문 날짜는 검색 결과의 URL 내 날짜코드 및 복수 매체 교차확인으로 검증했습니다.</div>
+
+  <div class="sheet-footer">
+    <span>Brand Team</span>
+    <span>2026.10.04</span>
+  </div>
+</div>
+</body>
+</html>
