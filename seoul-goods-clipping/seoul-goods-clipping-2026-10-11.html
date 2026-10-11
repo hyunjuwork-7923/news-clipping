@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>서울굿즈 클리핑 · 2026.10.11(일)</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --red: #CC0000;
+    --red-dark: #9b0000;
+    --navy: #00253E;
+    --paper: #ffffff;
+    --page-bg: #eceef0;
+    --line: #d9dee5;
+    --muted: #5a6370;
+    --soft: #f5f6f8;
+    --tint: #fdf3f3;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --red: #ff5c5c;
+      --red-dark: #ff8080;
+      --navy: #e8edf2;
+      --paper: #141a21;
+      --page-bg: #0b0e12;
+      --line: #2a323c;
+      --muted: #97a3b0;
+      --soft: #1b222a;
+      --tint: #2a1618;
+    }
+  }
+  :root[data-theme="dark"] {
+    --red: #ff5c5c;
+    --red-dark: #ff8080;
+    --navy: #e8edf2;
+    --paper: #141a21;
+    --page-bg: #0b0e12;
+    --line: #2a323c;
+    --muted: #97a3b0;
+    --soft: #1b222a;
+    --tint: #2a1618;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--page-bg);
+    color: var(--navy);
+    font-family: "Inter", "Apple SD Gothic Neo", "Malgun Gothic", -apple-system, "Segoe UI", sans-serif;
+    padding: 40px 20px;
+    word-break: keep-all;
+  }
+
+  .sheet {
+    max-width: 760px;
+    margin: 0 auto;
+    background: var(--paper);
+    box-shadow: 0 30px 60px -30px rgba(0,37,62,.35);
+    position: relative;
+    overflow: hidden;
+    padding: 0 0 36px;
+  }
+  .top-bar { height: 6px; background: var(--red); }
+
+  header.cover { padding: 34px 40px 26px; border-bottom: 1px solid var(--line); }
+  header.cover .eyebrow {
+    font-size: 11px; letter-spacing: .3em; text-transform: uppercase;
+    color: var(--red); font-weight: 700; margin-bottom: 10px;
+  }
+  header.cover h1 {
+    font-size: 30px; font-weight: 800; letter-spacing: -.02em;
+    color: var(--navy); margin: 0 0 8px; line-height: 1.15;
+  }
+  header.cover .sub { color: var(--muted); font-size: 13px; font-weight: 600; letter-spacing: .05em; }
+
+  section.block { padding: 30px 40px 6px; }
+
+  .section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; }
+  .section-head .sec-title-wrap { display: flex; align-items: baseline; gap: 12px; }
+  .sec-num { font-size: 26px; font-weight: 800; color: var(--red); line-height: 1; }
+  .sec-title-wrap h2 {
+    font-size: 18px; font-weight: 700; color: var(--navy); margin: 0;
+    letter-spacing: -.01em;
+  }
+  .sec-eyebrow {
+    font-size: 10px; letter-spacing: .25em; text-transform: uppercase;
+    color: var(--muted); font-weight: 700; margin-bottom: 2px;
+  }
+  .sec-stat { text-align: right; flex: none; }
+  .sec-stat .stat-num { font-size: 26px; font-weight: 800; color: var(--red); line-height: 1; }
+  .sec-stat .stat-label { font-size: 10px; letter-spacing: .15em; color: var(--muted); font-weight: 700; }
+
+  .head-rule { width: 48px; height: 3px; background: var(--red); margin: 14px 0 22px; }
+
+  .item {
+    display: flex;
+    gap: 14px;
+    padding: 16px 0;
+    border-top: 1px solid var(--line);
+    text-decoration: none;
+    color: inherit;
+  }
+  .item:first-child { border-top: none; }
+
+  .item .item-num { font-size: 13px; font-weight: 800; color: var(--red); flex: none; padding-top: 1px; }
+
+  .item .item-body { flex: 1; min-width: 0; }
+  .item .item-top { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+  .item .headline { font-size: 15px; font-weight: 700; color: var(--navy); letter-spacing: -.005em; line-height: 1.45; }
+  .item:hover .headline { color: var(--red); }
+
+  .item .dept {
+    display: inline-block;
+    font-size: 10px; font-weight: 700; letter-spacing: .04em;
+    color: var(--red); background: var(--tint);
+    border-radius: 3px; padding: 2px 7px;
+  }
+
+  .item .detail { font-size: 13px; color: var(--muted); line-height: 1.65; margin-top: 5px; }
+  .item .detail .outlet { color: var(--navy); font-weight: 600; }
+
+  .empty-line { font-size: 13.5px; color: var(--muted); padding: 16px 0; }
+
+  .sheet-footer {
+    margin-top: 20px; padding: 16px 40px 0;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 2px solid var(--navy);
+  }
+  .sheet-footer span {
+    font-size: 10px; letter-spacing: .15em; text-transform: uppercase;
+    color: var(--muted); font-weight: 700;
+  }
+
+  @media (max-width: 520px) {
+    header.cover, section.block, .sheet-footer { padding-left: 22px; padding-right: 22px; }
+    header.cover h1 { font-size: 24px; }
+    .item .headline { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="top-bar"></div>
+
+  <header class="cover">
+    <div class="eyebrow">Seoul Goods · Daily Clipping</div>
+    <h1>서울굿즈 클리핑</h1>
+    <div class="sub">2026.10.11 (일)</div>
+  </header>
+
+  <section class="block">
+    <div class="section-head">
+      <div class="sec-title-wrap">
+        <span class="sec-num">01</span>
+        <div>
+          <div class="sec-eyebrow">Press Coverage</div>
+          <h2>언론보도 (市·SDF 관련)</h2>
+        </div>
+      </div>
+      <div class="sec-stat"><span class="stat-num">2</span><span class="stat-label">건</span></div>
+    </div>
+    <div class="head-rule"></div>
+
+    <a class="item" href="https://www.newspim.com/news/view/20261008001308" target="_blank" rel="noopener">
+      <span class="item-num">1.1</span>
+      <div class="item-body">
+        <div class="item-top">
+          <span class="headline">서울시 '아이 키우기 좋은 기업 지원사업' 참여기업 97.5% 긍정평가</span>
+          <span class="dept">여성가족정책실</span>
+        </div>
+        <div class="detail">출산휴가·육아휴직 기업지원금 등 시범사업 전후 비교에서 근로자 평일 직접 돌봄시간이 늘어난 것으로 나타나 사업 확대 추진 <span class="outlet">(뉴스핌)</span></div>
+      </div>
+    </a>
+
+    <a class="item" href="https://www.newspim.com/news/view/20261008001275" target="_blank" rel="noopener">
+      <span class="item-num">1.2</span>
+      <div class="item-body">
+        <div class="item-top">
+          <span class="headline">'2026 서울달리기' 1만 2000명 참가…도심 명소 누빈다</span>
+        </div>
+        <div class="detail">11일 오전 7시30분 서울광장 일대 출발, 오전 7시10분~11시10분 남대문로·을지로·청계천로 등 구간별 교통 통제 <span class="outlet">(뉴스핌)</span></div>
+      </div>
+    </a>
+
+  </section>
+
+  <section class="block">
+    <div class="section-head">
+      <div class="sec-title-wrap">
+        <span class="sec-num">02</span>
+        <div>
+          <div class="sec-eyebrow">Mayor's Activity</div>
+          <h2>시장 동향</h2>
+        </div>
+      </div>
+      <div class="sec-stat"><span class="stat-num">0</span><span class="stat-label">건</span></div>
+    </div>
+    <div class="head-rule"></div>
+
+    <div class="empty-line">어제자(10.11) 오세훈 시장 개인 활동·발언에 대한 확인된 보도 없음</div>
+
+  </section>
+
+  <section class="block">
+    <div class="section-head">
+      <div class="sec-title-wrap">
+        <span class="sec-num">03</span>
+        <div>
+          <div class="sec-eyebrow">Goods Trend</div>
+          <h2>굿즈관련</h2>
+        </div>
+      </div>
+      <div class="sec-stat"><span class="stat-num">0</span><span class="stat-label">건</span></div>
+    </div>
+    <div class="head-rule"></div>
+
+    <div class="empty-line">어제자(10.11) 날짜가 확인되는 굿즈/트렌드 뉴스 없음</div>
+
+  </section>
+
+  <div class="sheet-footer">
+    <span>Brand Team</span>
+    <span>2026.10.11</span>
+  </div>
+</div>
+</body>
+</html>
