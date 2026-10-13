@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>서울굿즈 클리핑 · 2026-10-13</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --red: #CC0000;
+    --red-dark: #9b0000;
+    --navy: #00253E;
+    --paper: #ffffff;
+    --page-bg: #eceef0;
+    --line: #d9dee5;
+    --muted: #5a6370;
+    --soft: #f5f6f8;
+    --tint: #fdf3f3;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --red: #ff5c5c;
+      --red-dark: #ff8080;
+      --navy: #e8edf2;
+      --paper: #141a21;
+      --page-bg: #0b0e12;
+      --line: #2a323c;
+      --muted: #97a3b0;
+      --soft: #1b222a;
+      --tint: #2a1618;
+    }
+  }
+  :root[data-theme="dark"] {
+    --red: #ff5c5c;
+    --red-dark: #ff8080;
+    --navy: #e8edf2;
+    --paper: #141a21;
+    --page-bg: #0b0e12;
+    --line: #2a323c;
+    --muted: #97a3b0;
+    --soft: #1b222a;
+    --tint: #2a1618;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--page-bg);
+    color: var(--navy);
+    font-family: "Inter", "Apple SD Gothic Neo", "Malgun Gothic", -apple-system, "Segoe UI", sans-serif;
+    padding: 40px 20px;
+    word-break: keep-all;
+  }
+
+  .sheet {
+    max-width: 760px;
+    margin: 0 auto;
+    background: var(--paper);
+    box-shadow: 0 30px 60px -30px rgba(0,37,62,.35);
+    position: relative;
+    overflow: hidden;
+    padding: 0 0 36px;
+  }
+  .top-bar { height: 6px; background: var(--red); }
+
+  header.cover { padding: 34px 40px 26px; border-bottom: 1px solid var(--line); }
+  header.cover .eyebrow {
+    font-size: 11px; letter-spacing: .3em; text-transform: uppercase;
+    color: var(--red); font-weight: 700; margin-bottom: 10px;
+  }
+  header.cover h1 {
+    font-size: 30px; font-weight: 800; letter-spacing: -.02em;
+    color: var(--navy); margin: 0 0 8px; line-height: 1.15;
+  }
+  header.cover .sub { color: var(--muted); font-size: 13px; font-weight: 600; letter-spacing: .05em; }
+
+  .note {
+    padding: 14px 40px 0;
+    font-size: 11.5px; color: var(--muted); line-height: 1.6;
+  }
+
+  section.block { padding: 30px 40px 6px; }
+
+  .section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; }
+  .section-head .sec-title-wrap { display: flex; align-items: baseline; gap: 12px; }
+  .sec-num { font-size: 26px; font-weight: 800; color: var(--red); line-height: 1; }
+  .sec-title-wrap h2 {
+    font-size: 18px; font-weight: 700; color: var(--navy); margin: 0;
+    letter-spacing: -.01em;
+  }
+  .sec-eyebrow {
+    font-size: 10px; letter-spacing: .25em; text-transform: uppercase;
+    color: var(--muted); font-weight: 700; margin-bottom: 2px;
+  }
+  .sec-stat { text-align: right; flex: none; }
+  .sec-stat .stat-num { font-size: 26px; font-weight: 800; color: var(--red); line-height: 1; }
+  .sec-stat .stat-label { font-size: 10px; letter-spacing: .15em; color: var(--muted); font-weight: 700; }
+
+  .head-rule { width: 48px; height: 3px; background: var(--red); margin: 14px 0 22px; }
+
+  .item {
+    display: flex;
+    gap: 14px;
+    padding: 16px 0;
+    border-top: 1px solid var(--line);
+    text-decoration: none;
+    color: inherit;
+  }
+  .item:first-child { border-top: none; }
+
+  .item .item-num { font-size: 13px; font-weight: 800; color: var(--red); flex: none; padding-top: 1px; }
+
+  .item .item-body { flex: 1; min-width: 0; }
+  .item .item-top { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+  .item .headline { font-size: 15px; font-weight: 700; color: var(--navy); letter-spacing: -.005em; line-height: 1.45; }
+  .item:hover .headline { color: var(--red); }
+
+  .item .dept {
+    display: inline-block;
+    font-size: 10px; font-weight: 700; letter-spacing: .04em;
+    color: var(--red); background: var(--tint);
+    border-radius: 3px; padding: 2px 7px;
+  }
+
+  .item .detail { font-size: 13px; color: var(--muted); line-height: 1.65; margin-top: 5px; }
+  .item .detail .outlet { color: var(--navy); font-weight: 600; }
+
+  .empty-line { font-size: 13.5px; color: var(--muted); padding: 16px 0; }
+
+  .sheet-footer {
+    margin-top: 20px; padding: 16px 40px 0;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 2px solid var(--navy);
+  }
+  .sheet-footer span {
+    font-size: 10px; letter-spacing: .15em; text-transform: uppercase;
+    color: var(--muted); font-weight: 700;
+  }
+
+  @media (max-width: 520px) {
+    header.cover, section.block, .sheet-footer, .note { padding-left: 22px; padding-right: 22px; }
+    header.cover h1 { font-size: 24px; }
+    .item .headline { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="top-bar"></div>
+
+  <header class="cover">
+    <div class="eyebrow">Seoul Goods · Daily Clipping</div>
+    <h1>서울굿즈 클리핑</h1>
+    <div class="sub">2026-10-13 (화)</div>
+  </header>
+
+  <div class="note">※ 본 호는 네이버·다음(Daum) 뉴스 검색이 모두 차단된 환경에서, WebSearch(일반 웹 검색) 결과와 기사 URL의 날짜 표기를 대조해 작성했습니다. 날짜가 명확히 확인된 항목만 수록했습니다.</div>
+
+  <!-- Section 1: 언론보도 (市·SDF 관련) -->
+  <section class="block">
+    <div class="section-head">
+      <div class="sec-title-wrap">
+        <span class="sec-num">01</span>
+        <div>
+          <div class="sec-eyebrow">Press Coverage</div>
+          <h2>언론보도 (市·SDF 관련)</h2>
+        </div>
+      </div>
+      <div class="sec-stat"><span class="stat-num">2</span><span class="stat-label">건</span></div>
+    </div>
+    <div class="head-rule"></div>
+
+    <a class="item" href="https://www.dailian.co.kr/news/view/1700661/10%EC%9B%94-13%EC%9D%BC%ED%99%94-%EC%98%A4%EB%8A%98-%EC%84%9C%EC%9A%B8%EC%8B%9C-%EC%8B%A0%EC%86%8D%ED%95%9C-2026" target="_blank" rel="noopener">
+      <span class="item-num">1.1</span>
+      <div class="item-body">
+        <div class="item-top">
+          <span class="headline">신속한 누수 복구 위해 시민 신고 포상…최초 신고자에 3만원</span>
+          <span class="dept">상수도사업본부</span>
+        </div>
+        <div class="detail">2024~2025년 발생한 누수의 40% 이상이 시민 신고로 발견돼, 최초 신고자에게 3만원 상품권을 지급하는 포상제를 운영 중이라고 밝힘 <span class="outlet">(데일리안)</span></div>
+      </div>
+    </a>
+
+    <a class="item" href="https://www.newspim.com/news/view/20261013000198" target="_blank" rel="noopener">
+      <span class="item-num">1.2</span>
+      <div class="item-body">
+        <div class="item-top">
+          <span class="headline">서울시, 식빵·피자·물고기 모양 러닝코스 공개...인증 이벤트 진행</span>
+        </div>
+        <div class="detail">'서울에디션25 아트런' 캠페인으로 서울숲·매헌시민의숲·노량진수산시장 일대 GPS 러닝코스 3개를 공개, 14일부터 31일까지 시민 참여 인증 이벤트를 진행한다고 밝힘 <span class="outlet">(뉴스핌)</span></div>
+      </div>
+    </a>
+
+  </section>
+
+  <!-- Section 2: 시장 동향 -->
+  <section class="block">
+    <div class="section-head">
+      <div class="sec-title-wrap">
+        <span class="sec-num">02</span>
+        <div>
+          <div class="sec-eyebrow">Mayor's Activity</div>
+          <h2>시장 동향</h2>
+        </div>
+      </div>
+      <div class="sec-stat"><span class="stat-num">2</span><span class="stat-label">건</span></div>
+    </div>
+    <div class="head-rule"></div>
+
+    <a class="item" href="https://www.fnnews.com/news/202610131054538575" target="_blank" rel="noopener">
+      <span class="item-num">2.1</span>
+      <div class="item-body">
+        <div class="item-top">
+          <span class="headline">오세훈 "크리스마스까지 3만호 착공 완료"</span>
+        </div>
+        <div class="detail">서울시청에서 올해 착공 예정인 정비사업 조합 11곳·시공사 5곳·자치구 8곳과 '주택공급 목표 달성 공동협력 협약'을 직접 체결하고, 연말까지 미착공 11곳의 착공에 속도를 내겠다고 밝힘 <span class="outlet">(파이낸셜뉴스)</span></div>
+      </div>
+    </a>
+
+    <a class="item" href="https://www.segye.com/newsView/20261013512509" target="_blank" rel="noopener">
+      <span class="item-num">2.2</span>
+      <div class="item-body">
+        <div class="item-top">
+          <span class="headline">"공급 기반 무너져 피눈물"…오세훈, 박원순 시절 정비구역 해제 직격</span>
+        </div>
+        <div class="detail">같은 날 SNS를 통해 "2012년부터 2020년까지 389곳의 정비구역이 해제됐다"며 전임 시장 재임기 주택정책을 비판 (실명은 직접 거론하지 않음) <span class="outlet">(세계일보)</span></div>
+      </div>
+    </a>
+
+  </section>
+
+  <!-- Section 3: 굿즈관련 -->
+  <section class="block">
+    <div class="section-head">
+      <div class="sec-title-wrap">
+        <span class="sec-num">03</span>
+        <div>
+          <div class="sec-eyebrow">Goods Trend</div>
+          <h2>굿즈관련</h2>
+        </div>
+      </div>
+      <div class="sec-stat"><span class="stat-num">1</span><span class="stat-label">건</span></div>
+    </div>
+    <div class="head-rule"></div>
+
+    <a class="item" href="https://www.starnewskorea.com/business-life/2026/10/13/2026101310584857798" target="_blank" rel="noopener">
+      <span class="item-num">3.1</span>
+      <div class="item-body">
+        <div class="item-top">
+          <span class="headline">롯데웰푸드, 아이디어스와 2차 협업…과자 브랜드 굿즈 16종 출시</span>
+        </div>
+        <div class="detail">빼빼로 책갈피, 가나 키링, '짱셔요' 향수 등을 13일 우선 출시하고 27일에는 칙촉 에어팟 케이스·찰떡파이 클리커를 추가 출시. 1차 협업 굿즈는 9월까지 약 8,200개 판매됨 <span class="outlet">(스타뉴스)</span></div>
+      </div>
+    </a>
+
+  </section>
+
+  <div class="sheet-footer">
+    <span>Brand Team</span>
+    <span>2026-10-13</span>
+  </div>
+</div>
+</body>
+</html>
