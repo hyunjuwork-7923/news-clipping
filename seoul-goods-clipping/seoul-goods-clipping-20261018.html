@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>서울굿즈 클리핑 · 2026.10.18</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --red: #CC0000;
+    --red-dark: #9b0000;
+    --navy: #00253E;
+    --paper: #ffffff;
+    --page-bg: #eceef0;
+    --line: #d9dee5;
+    --muted: #5a6370;
+    --soft: #f5f6f8;
+    --tint: #fdf3f3;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --red: #ff5c5c;
+      --red-dark: #ff8080;
+      --navy: #e8edf2;
+      --paper: #141a21;
+      --page-bg: #0b0e12;
+      --line: #2a323c;
+      --muted: #97a3b0;
+      --soft: #1b222a;
+      --tint: #2a1618;
+    }
+  }
+  :root[data-theme="dark"] {
+    --red: #ff5c5c;
+    --red-dark: #ff8080;
+    --navy: #e8edf2;
+    --paper: #141a21;
+    --page-bg: #0b0e12;
+    --line: #2a323c;
+    --muted: #97a3b0;
+    --soft: #1b222a;
+    --tint: #2a1618;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--page-bg);
+    color: var(--navy);
+    font-family: "Inter", "Apple SD Gothic Neo", "Malgun Gothic", -apple-system, "Segoe UI", sans-serif;
+    padding: 40px 20px;
+    word-break: keep-all;
+  }
+
+  .sheet {
+    max-width: 760px;
+    margin: 0 auto;
+    background: var(--paper);
+    box-shadow: 0 30px 60px -30px rgba(0,37,62,.35);
+    position: relative;
+    overflow: hidden;
+    padding: 0 0 36px;
+  }
+  .top-bar { height: 6px; background: var(--red); }
+
+  header.cover { padding: 34px 40px 26px; border-bottom: 1px solid var(--line); }
+  header.cover .eyebrow {
+    font-size: 11px; letter-spacing: .3em; text-transform: uppercase;
+    color: var(--red); font-weight: 700; margin-bottom: 10px;
+  }
+  header.cover h1 {
+    font-size: 30px; font-weight: 800; letter-spacing: -.02em;
+    color: var(--navy); margin: 0 0 8px; line-height: 1.15;
+  }
+  header.cover .sub { color: var(--muted); font-size: 13px; font-weight: 600; letter-spacing: .05em; }
+
+  section.block { padding: 30px 40px 6px; }
+
+  .section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; }
+  .section-head .sec-title-wrap { display: flex; align-items: baseline; gap: 12px; }
+  .sec-num { font-size: 26px; font-weight: 800; color: var(--red); line-height: 1; }
+  .sec-title-wrap h2 {
+    font-size: 18px; font-weight: 700; color: var(--navy); margin: 0;
+    letter-spacing: -.01em;
+  }
+  .sec-eyebrow {
+    font-size: 10px; letter-spacing: .25em; text-transform: uppercase;
+    color: var(--muted); font-weight: 700; margin-bottom: 2px;
+  }
+  .sec-stat { text-align: right; flex: none; }
+  .sec-stat .stat-num { font-size: 26px; font-weight: 800; color: var(--red); line-height: 1; }
+  .sec-stat .stat-label { font-size: 10px; letter-spacing: .15em; color: var(--muted); font-weight: 700; }
+
+  .head-rule { width: 48px; height: 3px; background: var(--red); margin: 14px 0 22px; }
+
+  .item {
+    display: flex;
+    gap: 14px;
+    padding: 16px 0;
+    border-top: 1px solid var(--line);
+    text-decoration: none;
+    color: inherit;
+  }
+  .item:first-child { border-top: none; }
+
+  .item .item-num { font-size: 13px; font-weight: 800; color: var(--red); flex: none; padding-top: 1px; }
+
+  .item .item-body { flex: 1; min-width: 0; }
+  .item .item-top { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+  .item .headline { font-size: 15px; font-weight: 700; color: var(--navy); letter-spacing: -.005em; line-height: 1.45; }
+  .item:hover .headline { color: var(--red); }
+
+  .item .dept {
+    display: inline-block;
+    font-size: 10px; font-weight: 700; letter-spacing: .04em;
+    color: var(--red); background: var(--tint);
+    border-radius: 3px; padding: 2px 7px;
+  }
+
+  .item .detail { font-size: 13px; color: var(--muted); line-height: 1.65; margin-top: 5px; }
+  .item .detail .outlet { color: var(--navy); font-weight: 600; }
+
+  .empty-line { font-size: 13.5px; color: var(--muted); padding: 16px 0; }
+
+  .note {
+    font-size: 11px; color: var(--muted); padding: 10px 40px 0; line-height: 1.6;
+  }
+
+  .sheet-footer {
+    margin-top: 20px; padding: 16px 40px 0;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 2px solid var(--navy);
+  }
+  .sheet-footer span {
+    font-size: 10px; letter-spacing: .15em; text-transform: uppercase;
+    color: var(--muted); font-weight: 700;
+  }
+
+  @media (max-width: 520px) {
+    header.cover, section.block, .sheet-footer { padding-left: 22px; padding-right: 22px; }
+    header.cover h1 { font-size: 24px; }
+    .item .headline { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="top-bar"></div>
+
+  <header class="cover">
+    <div class="eyebrow">Seoul Goods · Daily Clipping</div>
+    <h1>서울굿즈 클리핑</h1>
+    <div class="sub">2026.10.18 (일)</div>
+  </header>
+
+  <!-- Section 1: 언론보도 (市·SDF 관련) -->
+  <section class="block">
+    <div class="section-head">
+      <div class="sec-title-wrap">
+        <span class="sec-num">01</span>
+        <div>
+          <div class="sec-eyebrow">Press Coverage</div>
+          <h2>언론보도 (市·SDF 관련)</h2>
+        </div>
+      </div>
+      <div class="sec-stat"><span class="stat-num">3</span><span class="stat-label">건</span></div>
+    </div>
+    <div class="head-rule"></div>
+
+    <a class="item" href="https://www.asiatoday.co.kr/kn/view.php?key=20261018010005542" target="_blank" rel="noopener">
+      <span class="item-num">1.1</span>
+      <div class="item-body">
+        <div class="item-top">
+          <span class="headline">"로봇이 일상 속으로"… 서울시, 시민 눈높이 'AI 포럼' 연다</span>
+        </div>
+        <div class="detail">서울시가 다음 달 3일 서울시청 8층 다목적홀에서 '서울 AI 인사이트 포럼'을 연다고 18일 밝힘. 로봇 등 AI 기술을 시민 눈높이에서 소개하는 공개 강연 <span class="outlet">(아시아투데이)</span></div>
+      </div>
+    </a>
+
+    <a class="item" href="https://www.dailian.co.kr/news/view/1702774" target="_blank" rel="noopener">
+      <span class="item-num">1.2</span>
+      <div class="item-body">
+        <div class="item-top">
+          <span class="headline">서울 120다산콜, 오는 20일부터 상담 20분 경과 시 '자동 종료'</span>
+          <span class="dept">120다산콜재단</span>
+        </div>
+        <div class="detail">120다산콜재단이 20일 오후 6시부터 상담이 20분을 넘으면 자동 종료되는 시스템을 도입한다고 18일 발표. 상담직원 보호와 운영 효율이 목적 <span class="outlet">(데일리안)</span></div>
+      </div>
+    </a>
+
+    <a class="item" href="https://segye.com/newsView/20261018512578" target="_blank" rel="noopener">
+      <span class="item-num">1.3</span>
+      <div class="item-body">
+        <div class="item-top">
+          <span class="headline">서울 곳곳 침수·교통통제…폭우 내리는 데 낙엽이 배수구막아</span>
+        </div>
+        <div class="detail">18일 서울에 폭우가 내려 서대문구 증산교 하부도로 등이 침수돼 교통이 통제됐고, 서울시는 자치구에 배수구 낙엽 제거 등 대응을 지시 <span class="outlet">(세계일보)</span></div>
+      </div>
+    </a>
+
+  </section>
+
+  <!-- Section 2: 시장 동향 -->
+  <section class="block">
+    <div class="section-head">
+      <div class="sec-title-wrap">
+        <span class="sec-num">02</span>
+        <div>
+          <div class="sec-eyebrow">Mayor's Activity</div>
+          <h2>시장 동향</h2>
+        </div>
+      </div>
+      <div class="sec-stat"><span class="stat-num">1</span><span class="stat-label">건</span></div>
+    </div>
+    <div class="head-rule"></div>
+
+    <a class="item" href="https://www.newspim.com/news/view/20261018000070" target="_blank" rel="noopener">
+      <span class="item-num">2.1</span>
+      <div class="item-body">
+        <div class="item-top">
+          <span class="headline">오세훈, 정부·여당 향해 "주택 공급 실패 인정하고 정책 바로잡아야"</span>
+        </div>
+        <div class="detail">오세훈 서울시장이 서울시가 최근 발간한 '주택공급정책 20년 백서'(정비구역 389곳 해제로 약 43만가구 공급기회 상실)를 근거로 정부·여당에 부동산 정책 실패 인정과 정책 방향 전환을 촉구 <span class="outlet">(뉴스핌)</span></div>
+      </div>
+    </a>
+
+  </section>
+
+  <!-- Section 3: 굿즈관련 -->
+  <section class="block">
+    <div class="section-head">
+      <div class="sec-title-wrap">
+        <span class="sec-num">03</span>
+        <div>
+          <div class="sec-eyebrow">Goods Trend</div>
+          <h2>굿즈관련</h2>
+        </div>
+      </div>
+      <div class="sec-stat"><span class="stat-num">2</span><span class="stat-label">건</span></div>
+    </div>
+    <div class="head-rule"></div>
+
+    <a class="item" href="https://www.ajunews.com/view/20261016210413794" target="_blank" rel="noopener">
+      <span class="item-num">3.1</span>
+      <div class="item-body">
+        <div class="item-top">
+          <span class="headline">'딸깍' 서울굿즈 '키캡키링' 완판...2탄은 머그컵에 야경 담는다</span>
+        </div>
+        <div class="detail">서울시에 따르면 지난달 30일 출시한 '서울마이소울 LED 키캡키링' 준비 물량 약 200개가 18일 기준 모두 소진돼 완판. 후속으로 '서울마이소울 변색 머그컵'을 오는 28일 출시 예정 <span class="outlet">(아주경제)</span></div>
+      </div>
+    </a>
+
+    <a class="item" href="https://www.metroseoul.co.kr/article/20261018500231" target="_blank" rel="noopener">
+      <span class="item-num">3.2</span>
+      <div class="item-body">
+        <div class="item-top">
+          <span class="headline">마사회 제작 '경주마 굿즈' 완판 행진...팝업스토어 확대 운영</span>
+        </div>
+        <div class="detail">한국마사회가 10월 3일 출시한 '스피드영 키링' 초도 물량 300개가 2주 만에 완판돼 200개를 추가 확보, 지역 팝업스토어로 판매를 확대한다고 18일 밝힘 <span class="outlet">(메트로서울)</span></div>
+      </div>
+    </a>
+
+  </section>
+
+  <div class="note">※ 이 클리핑은 이 환경의 브라우저/WebFetch 도구로 다음(Daum)·네이버 뉴스 검색에 접근할 수 없어(DNS 차단), SKILL.md의 대체 지침에 따라 WebSearch를 통해 조사했습니다. 각 항목은 실제 언론사 보도(원문 "18일 밝혔다/발표" 표기)로 대상일(2026.10.18) 일치를 확인했습니다.</div>
+
+  <div class="sheet-footer">
+    <span>Brand Team</span>
+    <span>2026.10.18</span>
+  </div>
+</div>
+</body>
+</html>
